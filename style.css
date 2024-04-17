@@ -32,7 +32,7 @@ body{
 #under-line{
     height: 4px;
     background-color: rgb(255, 80, 226);
-    position: absolute;
+    position: absolute; /* ? > 유튜브영상 확인하라고 하심*/
     width:70px;
     left:0px; /*어디서 부터 시작할지*/
     top: 52px;
@@ -47,4 +47,21 @@ body{
 
 .task-done{
     text-decoration: line-through;
+}
+
+
+.task-done div{
+    background-color:aquamarine;
+}
+
+.fa-solid.fa-check{
+    color:greenyellow;
+    font-size: x-large;
+    margin-left:10px;
+}
+
+.fa-solid.fa-trash-can{
+    color:red;
+    font-size: x-large;
+    margin-left:10px;
 }

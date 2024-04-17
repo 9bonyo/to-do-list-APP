@@ -36,8 +36,8 @@ function render(){
             resultHTML += `<div class="task">
                 <div class="task-done">${taskList[i].taskContent}</div>
                     <div>
-                        <button onclick="checkTask('${taskList[i].id}')">CHECK</button>
-                        <button onclick="deleteTask()">DELETE</button>
+                        <i class="fa-solid fa-check" onclick="checkTask('${taskList[i].id}')"></i>
+                        <i class="fa-solid fa-trash-can" onclick="deleteTask(${taskList[i].id})"></i>
                     </div>
                </div>`; 
         }
@@ -45,8 +45,8 @@ function render(){
             resultHTML += `<div class="task">
                 <div>${taskList[i].taskContent}</div>
                     <div>
-                        <button onclick="checkTask('${taskList[i].id}')">CHECK</button>
-                        <button onclick="deleteTask()">DELETE</button>
+                        <i class="fa-solid fa-check" onclick="checkTask('${taskList[i].id}')"></i>
+                        <i class="fa-solid fa-trash-can" onclick="deleteTask('${taskList[i].id}')"></i>
                     </div>
                </div>`;        
         }
@@ -68,8 +68,18 @@ function checkTask(id){
    console.log(taskList);
 }
 
-function deleteTask(){
+function deleteTask(id){
     console.log("삭제버튼테스트요 삭제버튼 숙제요");
+    for(let i=0; i<taskList.length;i++){
+    if(taskList[i].id == id){
+        console.log(id);
+        taskList.splice(i,1);
+        console.log(taskList);
+        break;
+    }
+    }
+    render();
+    console.log(taskList);
 }
 
 function randomIDGenerate(){
