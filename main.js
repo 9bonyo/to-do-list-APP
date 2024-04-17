@@ -17,7 +17,9 @@ addButton.addEventListener("click", addTask);
 
 function addTask(){
     
+
     let task = {
+
         id : randomIDGenerate(), //어떤 check버튼인지 콕 집어 선택하기 위한 unique id
         taskContent : taskInput.value,
         isComplete : false
@@ -30,14 +32,24 @@ function addTask(){
 function render(){
     let resultHTML = '';
     for(let i=0;i<taskList.length;i++){
-        resultHTML += `<div class="task">
+        if(taskList[i].isComplete == true){
+            resultHTML += `<div class="task">
+                <div class="task-done">${taskList[i].taskContent}</div>
+                    <div>
+                        <button onclick="checkTask('${taskList[i].id}')">CHECK</button>
+                        <button onclick="deleteTask()">DELETE</button>
+                    </div>
+               </div>`; 
+        }
+        else {
+            resultHTML += `<div class="task">
                 <div>${taskList[i].taskContent}</div>
                     <div>
                         <button onclick="checkTask('${taskList[i].id}')">CHECK</button>
-                        <button>DELETE</button>
+                        <button onclick="deleteTask()">DELETE</button>
                     </div>
                </div>`;        
-    
+        }
     }
 
     document.getElementById("task-board").innerHTML = resultHTML;
@@ -48,12 +60,16 @@ function render(){
 function checkTask(id){
    for(let i=0;i<taskList.length;i++){
         if(taskList[i].id == id){
-            taskList[i].isComplete = true;
+            taskList[i].isComplete = !taskList[i].isComplete;
             break;
-        }
-        
+        }       
    }
+   render();
    console.log(taskList);
+}
+
+function deleteTask(){
+    console.log("삭제버튼테스트요 삭제버튼 숙제요");
 }
 
 function randomIDGenerate(){
